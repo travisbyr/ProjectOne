@@ -30,11 +30,31 @@ function checkEmail(input) {
 
 // Check required table
 function checkRequired(inputArr) {
-    inputArr.forEarch(function(input) {
+    inputArr.forEach(function(input) {
         if (input.value.trim() === '') {
             showError(input, `${getFieldName(input)} is required`);
         } else {
             showSuccess(input);
         }
+    });
+}
+
+// Check input length
+function checkLength(input,min,max) {
+    if (input.value.length < min) {
+        showError(input, `${getFieldname(input)} must be atlease ${min} characters`);
+    } else if (input.value.length > max) {
+        showError(input, `${getFieldName(input)} must be less than ${max} characters`);
+    } else {
+        showSuccess(input);
     }
 }
+
+// Check passwords match
+function checkPasswordsMatch(input1, input2) {
+    if (input1.value !== input2.value) {
+        showError(input2, 'Passwords do not match');
+    }
+}
+
+// Get fieldname
